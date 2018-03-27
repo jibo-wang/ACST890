@@ -1,4 +1,6 @@
 # ACST890
+##Question 1
+
 fibfunction=function(n){
 fib = numeric(n)
 fib[1]=1
@@ -9,36 +11,46 @@ for (i in 3:n) {
 return(fib)
 }
 
+##Question 3
+#part a
 setwd("~/Google Drive/Master of Applied Statistics/Semester 1 2018/Assignment Data")
 dataset=read.csv("PersonenSchaden.csv",header = TRUE)
 attach(dataset)
 
+#part b
 c(mean=mean(dataset$total),variance=var(dataset$total),sd=sd(dataset$total))
 c(largest_claim=max(dataset$total),smallest_claim=min(dataset$total),
   median=median(dataset$total),bottom_quartile=quantile(dataset$total,0.25),
   top_quartile=quantile(dataset$total,0.75))
 
+#part c
 bins=seq(0,4500000,1000)
 hist(dataset$total,main="Histogram of Values of Claims",breaks = bins,xlim = c(0,200000))
 
+#part d
 dataset$settle_delay=dataset$finmonth-dataset$repmonth
 hist(dataset$settle_delay, main="Histogram of settlement delay")
 
+#part e
 h=hist(dataset$legrep, breaks = 2)
 h$density=h$counts/sum(h$counts)
 barplot(h$density,xlab = "Legal Representation",names.arg = c("0","1"),
         ylab = "Percentage of Total Claims",main = "Histogram of Legal Representation")
 
+#part f
 inj=with(dataset,table(dataset$inj1))
 inj_percentage=inj/sum(inj)
 barplot(inj_percentage,names.arg = row.names(inj_percentage),
         ylab = "Percentage of Total Claims",main = "Histogram of Injury Code")
 
+#Part h
 dataset$l_claim=log(dataset$total)
 hist(dataset$l_claim,main = "Histogram of Log Value of Claims")
 
+#part i
 plot(dataset$op_time,dataset$total)
 plot(dataset$op_time,dataset$l_claim)
 
+#part k
 library(ggplot2)
 qplot(dataset$op_time,dataset$l_claim,col=dataset$legrep)
