@@ -1,0 +1,58 @@
+##Question 2
+#set directory
+$ cd /users/andy/desktop/ACST890
+
+#make file regurgitator.sh executable
+$ chmod +x regurgitator.sh
+
+#run the commond with no parameter input
+$ ./regurgitator.sh
+
+#run the commond with parameter "here are four arguments"
+$ ./regurgitator.sh here are four arguments
+
+#run the commond with parameter "My forename is andy"
+$ ./regurgitator.sh My forename is andy
+
+#run the commond with parameter "My name is andy wang"
+$ ./regurgitator.sh My name is andy wang
+
+
+##Question 3
+#set directory to locate the private key
+$ cd /users/andy/desktop/ACST890
+
+#protect your private key
+$ chmod 400 /users/andy/desktop/shell/41895983_ACST890_s1_2018.pem
+
+#log in to AWS account
+$ ssh -i/users/andy/desktop/shell/41895983_ACST890_s1_2018.pem ubuntu@xxxxxxxxxxxxxx.compute.amazonaws.com
+
+#create a new directory to store file and reset directory
+$ mkdir data/onlinequiz
+$ cd data/onlinequiz
+
+#create file fib.sh and insert content
+$ vi fib.sh
+
+#!/bin/bash
+#insert initial number of terms
+echo "How many number of terms to generate?"
+read n
+#before run calculate Fibonacci series, check whether n is greater than 0 otherwise give error message
+k=0
+if test $n -le $k; then
+        echo "Please enter a positive number:"
+        read n
+#script for Fibonacci sequence logic
+fi
+f1=0
+f2=1
+echo "Fibonacci sequence is:"
+for (( i=0;i<=n;i++ )); do
+	echo -n "$f1 "
+	fn=$((f1+f2))
+	f1=$f2
+	f2=$fn
+done
+echo
