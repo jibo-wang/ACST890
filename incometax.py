@@ -28,4 +28,6 @@ def incometax():
             #round to two decimal places
             print("Your tax liability is "+str(tax))
             print("Your after-tax income is "+str(netin))
+            #display the result for tax liability and net income
             break
+            #break if-loop to finish the program
